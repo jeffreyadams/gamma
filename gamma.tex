@@ -1,0 +1,695 @@
+%edited starting 8/27/17 for re-submission to Duke
+\documentclass[10pt,leqno]{article} 
+\usepackage{verbatim} 
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsrefs}
+\usepackage{rotating}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{tabularx}
+\setlength\extrarowheight{4pt}   %spacing in tables
+\usepackage{theorem}
+\usepackage[matrix,tips,frame,color,line,poly,curve]{xy}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\newcommand\kappaarrow[2]{#1\overset\kappa\rightarrow#2}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{desideratum}[equation]{Desideratum}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{remark}[equation]{Remark}
+{\theorembodyfont{\rmfamily}\newtheorem{theoremplain}[equation]{Theorem}
+\newtheorem{remarkplain}[equation]{Remark}
+\newtheorem{editorialremarkplain}[equation]{Editorial Remark}
+\newtheorem{exampleplain}[equation]{Example}
+\newtheorem{corollaryplain}[equation]{Corollary}
+\newtheorem{mytable}[equation]{Table}
+}
+
+\renewcommand{\sec}[1]{\section{#1}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+  \setcounter{equation}{0}}
+\newcommand{\subsec}[1]{\subsection{#1}
+\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+  \setcounter{equation}{0}}
+
+\newcommand{\subsubsec}[1]{\subsubsection{#1}
+\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+  \setcounter{equation}{0}}
+
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{trivlist}}
+
+\newcommand{\Gext}{\negthinspace\negthinspace\phantom{a}^\delta G}
+\newcommand{\thetaG}{\negthinspace\negthinspace\phantom{a}^\theta
+  G(\C)}
+\newcommand{\thetaK}{\negthinspace\negthinspace\phantom{a}^\theta K(\C)}
+\newcommand{\qed}{\hfill $\square$ \medskip}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\qed}
+\newcommand\exact[3]{1\rightarrow #1\rightarrow #2\rightarrow #3\rightarrow1}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inv}{\mathrm{Invol}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\gr}{\mathrm{gr}}
+\newcommand{\Out}{\mathrm{Out}}
+\newcommand{\Int}{\mathrm{Int}}
+\renewcommand{\int}{\mathrm{int}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ind}{\mathrm{Ind}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\Ad}{\mathrm{Ad}}
+\newcommand{\zinv}{\mathrm{inv}}
+\newcommand{\SRF}{\mathrm{SRF}}
+\newcommand{\Gad}{G_\mathrm{ad}}
+\newcommand{\Gsc}{G_\mathrm{sc}}
+\newcommand{\Zsc}{Z_\mathrm{sc}}
+\newcommand{\Ztor}{Z_\mathrm{tor}}
+\newcommand{\Gbar}{\overline G}
+\newcommand{\Kad}{K_\mathrm{ad}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Norm}{\mathrm{Norm}}
+\newcommand{\Cent}{\mathrm{Cent}}
+\newcommand{\I}{\mathcal I}
+\renewcommand{\O}{\mathcal O}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\W}{\mathbb W}
+\newcommand{\Ztwo}{\mathbb Z_2}
+\newcommand{\N}{\mathcal N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\E}{\mathbb E}
+\newcommand{\G}{G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\h}{\mathfrak h}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\sl}{\mathfrak s\mathfrak l}
+\renewcommand{\P}{\mathcal P}
+\renewcommand{\a}{\mathfrak a}
+\newcommand{\zk}{\mathfrak z_\mathfrak k}
+\newcommand{\A}{\mathbb A}
+\newcommand{\K}{\mathcal K}
+\newcommand{\B}{\mathcal B}
+\renewcommand{\k}{\mathfrak k}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\spint}{\widetilde{Spin}}
+\newcommand{\ch}[1]{#1^\vee}
+\newcommand\sigmaqc{\sigma_{\text{qc}}}
+\newcommand\thetaqc{\theta_{\text{qc}}}
+\newcommand{\Fgal}{F_{\text{gal}}}
+\newcommand{\Falg}{F_{\text{alg}}}
+\newcommand{\cl}{\mathit{cl}}
+\newcommand{\Lie}{\mathrm{Lie}}
+\newcommand{\opp}{\text{-opp}}
+
+\renewcommand{\t}{\mathfrak t}
+\newcommand{\su}{\mathfrak s\mathfrak u}
+\newcommand{\g}{\mathfrak g}
+\newcommand\inv{^{-1}}
+\newcommand\wh{\widehat}
+\newcommand{\GL}{\text{GL}}
+\newcommand{\SL}{\text{SL}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\SU}{\text{SU}}
+\newcommand{\Spin}{\text{Spin}}
+\renewcommand{\a}{\mathrm a}
+\renewcommand{\b}{\mathrm b}
+\renewcommand{\c}{\mathrm c}
+\newcommand{\LG}{\overset{L}{\vphantom{a}}\negthinspace G}
+\newcommand{\WR}{W_\R}
+\newcommand{\Y}{\widetilde{\mathcal Y}^\vee}
+\begin{document}
+\title{Gamma factors for real groups}
+\author{Jeffrey Adams}
+\maketitle
+
+\bibliographystyle{plain}
+\bibliography{/home/jda/bibliographies/refs}
+
+\sec{Preliminaries}
+
+Write a one-dimensional representation of $W_\R$ as  $\a(\delta,t)$ where $\delta\in\Z/2\Z$ and $t\in\C$.
+$$
+\begin{aligned}
+\a(\delta,t)(z)&=|z|^t\\
+\a(\delta,t)(j)&=(-1)^\delta
+\end{aligned}
+$$
+
+Write a two-dimensional representation of $W_\R$ as
+$\b(n,t)$ with $n\in \Z$ and $t\in\C$:
+$$
+\begin{aligned}
+\b(n,t)&=\Ind_{\C^\times}^{W_\R}(|z|^t(z/\overline z)^{n/2})\\
+&=\Ind_{\C^\times}^{W_\R}(r^te^{in\theta})
+\end{aligned}
+$$
+More explicitly
+$$
+\begin{aligned}
+\b(n,t)(z=re^{i\theta})&=\diag(|z|^t(z/\overline z)^{n/2},|z|^{t}(z/\overline z)^{-n/2})\\
+&=\diag(r^te^{in\theta},r^te^{-in\theta})\\
+\b(n,t)(j)&=\begin{pmatrix}0&1\\(-1)^n&0\end{pmatrix}
+\end{aligned}
+$$
+Then $\b(n,t)$ is irreducible if and only if $n\ne 0$, and $\b(n,t)\simeq\b(-n,t)$, so
+we may assume $n\ge 0$.
+Note that 
+$$
+\b(0,t)\simeq \a(0,t) \oplus \a(1,t)
+$$
+and
+$$
+\det(\b(n,t))=a(n\pmod 2,2t)
+$$
+
+
+Note that Knapp [] defines $\phi(\pm,t)$ and $\phi(\ell,t)$ with $t\in\C$ and $\ell\in\Z$. 
+The dictionary is
+$$
+\begin{aligned}
+\a(\delta,t)&=\phi((-1)^\delta,t)\\
+\b(n,t)&=\phi(n,t/2)\\
+\end{aligned}
+$$
+Note the $t/2$ term. In the other direction
+$$
+\begin{aligned}
+\phi(\epsilon,t)&=\a(\frac{\epsilon-1}2,t)\\
+\phi(n,t)&=\b(n,2t)
+\end{aligned}
+$$
+
+Note that
+$$
+\begin{aligned}
+\a(\delta,t)^*&=\a(\delta,-t)\\
+\b(n,t)^*&=\b(n,-t).
+\end{aligned}
+$$
+These follow from the fact that $\theta_{\pi^*}(g)=\theta_{\pi}(g\inv)$. (Note: this is not equal to $\overline{\theta_\pi(g)}$ since 
+$W_\R$ is not finite). 
+
+The root numbers $\epsilon(s,\rho,\Psi)$ are defined for $s\in\C$, $\rho$ a representation of $W_\R$, and $\Psi$ a non-trivial additive character of $\R$.
+In the case of $\R$ this is independent of $s$. Take $\Psi_0(x)=e^{2\pi ix}$,
+and set
+$$
+\epsilon(\rho)=\epsilon(s,\rho,\Psi_0).
+$$
+From Knapp [] we have the following formula for $\epsilon$.
+
+$$
+\begin{aligned}
+\epsilon(\a(\delta,t))&=i^\delta\\
+\epsilon(\b(n,t))&=i^{|n|+1}
+\end{aligned}
+$$
+
+Let $\Gamma(z)$ be the standard $\Gamma$-function. Here are some properties we need.
+First of all
+$$
+\Gamma(z+1)=z\Gamma(z)\quad \Gamma(z)=\frac{\Gamma(z+1)}z
+$$
+and
+$$
+\Gamma(z+n)=z^{\overline n}\Gamma(z)\quad (n\in \Z_{\ge 0}).
+$$
+Furthermore
+\begin{equation}
+\label{e:ref}
+z+w=1\Rightarrow \Gamma(z)\Gamma(w)=\frac{\pi}{\sin(\pi z)}=\frac{\pi}{\sin(\pi w)}
+\end{equation}
+and
+\begin{equation}
+\label{e:dup}
+w-z=\frac12\Rightarrow \Gamma(z)\Gamma(w)=2^{1-2z}\sqrt\pi \Gamma(2z)
+\end{equation}
+
+
+\newpage
+\begin{lemma}
+\label{l:Gammas}
+If $z+w=\frac12$ then
+$$
+\begin{aligned}
+  \frac{\Gamma(z)}{\Gamma(w)}&=2^{1-2z}\pi^{-\frac12}\Gamma(2z)\cos(\pi z)\\
+  &=\frac1{2^{1-2w}\pi^{-\frac12}\Gamma(2w)\cos(\pi w)}
+\end{aligned}  
+$$
+
+
+If $z+w=\frac32$ then
+$$
+\begin{aligned}
+\frac{\Gamma(z)}{\Gamma(w)}&=-2^{2-2z}\pi^{-\frac12}\Gamma(2z-1)\cos(\pi z)\\
+&=\frac1{-2^{2-2w}\pi^{-\frac12}\Gamma(2w-1)\cos(\pi w)}
+\end{aligned}
+$$
+
+Suppose $z+w=\frac 12+\delta$ with $\delta=0,1$. Then
+$$
+\begin{aligned}
+\frac{\Gamma(z)}{\Gamma(w)}&=(-2)^\delta2^{1-2z}\pi^{-\frac12}\Gamma(2z-\delta)\cos(\pi z)\\
+&=\frac1{(-2)^\delta2^{1-2w}\pi^{-\frac12}\Gamma(2w-\delta)\cos(\pi w)}
+\end{aligned}
+$$
+
+\end{lemma}
+
+\begin{proof}
+$$
+\begin{aligned}
+\frac{\Gamma(z)}{\Gamma(w)}&=
+\frac{\Gamma(z)\Gamma(z+\frac12)}{\Gamma(w)\Gamma(z+\frac12)}\\
+&=
+\frac{2^{1-2z}\sqrt\pi\Gamma(2z)}
+{\frac\pi{\sin(\pi(z+\frac12))}}
+\end{aligned}
+$$
+where we've applied  \eqref{e:dup} to the numerator, and \eqref{e:ref} to the denominator, using $w+(z+\frac12)=(w+z)+\frac12=\frac12+\frac12=1$.
+
+Or course the second assertion follows by symmetry. Let's check the equality directly:
+$$
+\begin{aligned}
+2^{1-2z}\pi^{-\frac12}\Gamma(2z)\cos(\pi z)&*2^{1-2w}\pi^{-\frac12}\Gamma(2w)\cos(\pi w)
+=2^{2-2(z+w)}\pi\inv \Gamma(2z)\Gamma(2w)\cos(\pi z)\cos(\pi w)\\
+&=
+2^{2-2(\frac12)}\pi\inv \Gamma(2z)\Gamma(1-2z)\cos(\pi z)\cos(\pi(\frac12-z)\\
+&=2\pi\inv \frac\pi{\sin(2\pi z)}\cos(\pi z)\sin(\pi z)=1
+\end{aligned}
+$$
+
+For the next assertion, with $z+w=\frac 32$ compute:
+$$
+\begin{aligned}
+  \frac{\Gamma(z)}{\Gamma(w)}&=
+  \frac{\Gamma(z)\Gamma(z-\frac12)}{\Gamma(w\Gamma(z-\frac12))}\\
+  &=
+  \frac{2^{1-2(z-\frac12)}\sqrt\pi \Gamma(2z-1)}{\frac\pi{\sin(\pi(z-\frac12))}}
+  \\
+  &=2^{2-2z}\pi^{-\frac12}\Gamma(2z-1)\sin(\pi(z-\frac12)\\
+    &=-2^{2-2z}\pi^{-\frac12}\Gamma(2z-1)\cos(\pi z))\\
+\end{aligned}
+$$
+
+  \end{proof}
+
+
+
+
+
+
+
+Here are the formulas for the normalized $L$-functions.
+$$
+\begin{aligned}
+L(s,\a(\delta,t))&=\pi^{-\frac{s+t+\delta}2}\Gamma(\frac{s+t+\delta}2)\quad(\delta=0,1)\\
+L(s,\b(n,t)&=2(2\pi)^{-(s+\frac{t+ |n|}2)}\Gamma(s+\frac{t+|n|}2)
+\end{aligned}
+$$
+The $\gamma$ factor satisfies:
+$$
+\gamma(s,\rho,\Psi)=\epsilon(s,\rho,\Psi)\frac{L(1-s,\rho^*)}{L(s,\rho)}
+$$
+
+Let's compute $\gamma(\a(\delta,t))$.
+\begin{equation}
+\begin{aligned}
+\gamma(s,\a(\delta,t))&=i^\delta\frac{L(1-s,\a(\delta,-t))}{L(s,\a(\delta,t))}\\
+&=
+i^\delta
+\frac{\pi^{-\frac{(1-s)-t+\delta}2}\Gamma(\frac{1-s-t+\delta}2)}
+{\pi^{-\frac{s+t+\delta}2}\Gamma(\frac{s+t+\delta}2)}\\
+&=i^\delta
+\pi^{-\frac 12+s+t}\frac{\Gamma(\frac{1-s-t+\delta}2)}{\Gamma(\frac{s+t+\delta}2)}
+\end{aligned}
+\end{equation}
+
+Now consider  $\b(n,t)$:
+$$
+\begin{aligned}
+\gamma(s,\b(n,t))&=i^{|n|+1}\frac{L(1-s,\b(n,-t))}{L(s,\b(n,t))}\\
+&=i^{|n|+1}
+\frac{2(2\pi)^{-(1-s+\frac{-t+|n|}2)}\Gamma((1-s)+\frac{-t+|n|}2)}{
+2(2\pi)^{-(s+\frac{t+|n|}2)}\Gamma(s+\frac{t+|n|}2)}\\
+&=i^{|n|+1}(2\pi)^{-1+2s+t}
+\frac{\Gamma(1-s+\frac{-t+|n|}2)}{\Gamma(s+\frac{t+|n|}2)}
+\end{aligned}
+$$
+
+Here is a summary:
+\begin{lemma}
+  \label{l:gammas}
+$$
+  \gamma(s,\a(\delta,t))=\pi^{-\frac 12+s+t}\frac{\Gamma(\frac{1-s-t+\delta}2)}{\Gamma(\frac{s+t+\delta}2)}
+$$
+  and
+  $$
+  \gamma(s,\b(n,t))=i^{|n|+1}(2\pi)^{-1+2s+t}\frac{\Gamma(1-s+\frac{-t+|n|}2)}{\Gamma(s+\frac{t+|n|}2)}
+  $$
+\end{lemma}
+
+
+Note that in the formula for $\gamma(s,\a(\delta,t))$,
+$\frac{1-s-t+\delta}2+\frac{1+s+t+\delta}2=\frac12+\delta\in\frac12,\frac32$, so we can apply Lemma \ref{l:Gammas}.
+This gives a formula of a different form:
+
+\begin{lemma}
+$$
+\begin{aligned}
+\gamma(s,\a(\delta,t))&=(-i)^\delta\pi\inv (2\pi)^{s+t}\Gamma(1-s-t)\cos(\pi(\frac{1-s-t}2+\frac\delta 2))\\
+&=\frac1{i^\delta\pi\inv(2\pi)^{1-s-t}\Gamma(s+t)\cos(\pi(\frac{s+t}2+\frac\delta 2))}
+\end{aligned}
+$$
+\end{lemma}
+
+
+\begin{proof}
+  $$
+  \begin{aligned}
+    \gamma(s,\a(\delta,t))&=i^\delta\pi^{-\frac 12+s+t}\frac{\Gamma(\frac{1-s-t+\delta}2)}{\Gamma(\frac{s+t+\delta}2)}\\
+    &= i^\delta\pi^{-\frac 12+s+t}(-2)^\delta 2^{1-2\frac{1-s-t+\delta}2}\pi^{-\frac12}\Gamma(2\frac{1-s-t+\delta}2-\delta)\cos(\pi( \frac{1-s-t+\delta}2))\\
+    &=    i^\delta\pi^{-1+s+t}(-2)^\delta2^{s+t-\delta}\Gamma(1-s-t)\cos(\pi( \frac{1-s-t+\delta}2))\\
+    &=    (-i)^\delta\pi^{-1+s+t}2^{s+t}\Gamma(1-s-t)\cos(\pi( \frac{1-s-t+\delta}2))\\
+        &=    (-i)^\delta\pi\inv(2\pi)^{s+t}\Gamma(1-s-t)\cos(\pi (\frac{1-s-t+\delta}2))
+  \end{aligned}
+  $$
+  The second equality is similar. 
+\end{proof}
+
+Sanity check: the equality of the two expressions can be checked directly:
+$$
+\begin{aligned}
+  (-i)^\delta\pi\inv& (2\pi)^{s+t}\Gamma(1-s-t)\cos(\pi(\frac{1-s-t}2+\frac\delta 2))*
+  i^\delta\pi\inv(2\pi)^{1-s-t}\Gamma(s+t)\cos(\pi(\frac{s+t}2+\frac\delta 2))\\
+  &=\pi^{-2}(2\pi) \Gamma(1-s-t)\Gamma(s+t)
+  \cos(\pi(\frac{1-s-t}2+\frac\delta 2))\cos(\pi(\frac{s+t}2+\frac\delta 2))\\
+  &=  \frac2\pi\frac{\pi}{\sin(\pi(s+t))}\cos(\pi(\frac{s+t-\delta}2-\frac12)\cos(\pi(\frac{s+t}2+\frac\delta 2))\\
+  &=  \frac{2\sin(\pi(\frac{s+t}2-\frac\delta2))\cos(\pi(\frac{s+t}2+\frac\delta2))}{2\cos(\pi(\frac{s+t}2)\sin(\pi(\frac{s+t}2))}\\
+  &=\begin{cases}1&\delta=0\\
+  \frac{(-1)\cos(\pi(\frac{s+t}2))(-1)\sin(\pi(\frac{s+t}2))}{\cos(\pi(\frac{s+t}2)\sin(\pi(\frac{s+t}2)))}=1&\delta=1
+  \end{cases}
+\end{aligned}
+$$
+
+
+\begin{lemma}
+$$ \gamma(s,\a(\delta,t_1))*\gamma(s,\a(\delta,t_2))=(-1)^\delta(2\pi)^{-1+2s+t_1+t_2}\frac{\Gamma(1-s-t_1)}{\Gamma(s+t_2)}\frac{\cos(\pi(\frac{1-s-t_1}2+\frac\delta2)}
+  {\cos(\pi(\frac{s+t_2}2+\frac\delta2)}
+  $$
+  Suppose
+  $$
+  t_1-t_2\in 2\Z+1
+  $$
+  Then
+$$ \gamma(s,\a(\delta,t_1))*\gamma(s,\a(\delta,t_2))=(2\pi)^{-1+2s+t_1+t_2}(-1)^{\frac{t_1-t_2-1}2}\frac{\Gamma(1-s-t_1)}{\Gamma(s+t_2)}
+$$
+Note this is independent of $\delta$.
+
+  In particular suppose
+  $$
+t\in \Z+\frac12.
+  $$
+  Then
+$$
+  \gamma(s,\a(\delta,t))*\gamma(s,\a(\delta,-t))=(2\pi)^{-1+2s}(-1)^{t-\frac12}\frac{\Gamma(1-s-t)}{\Gamma(s-t)}
+  $$
+\end{lemma}
+
+\begin{proof}
+The first statement follows from the previous Lemma, applying the first and second identity once each:
+$$
+\begin{aligned}
+  \gamma(s,\a(\delta,t_1))*\gamma(s,\a(\delta,t_2))&=
+\frac{(-i)^\delta\pi\inv (2\pi)^{s+t_1}\Gamma(1-s-t_1)\cos(\pi(\frac{1-s-t_1}2+\frac\delta 2))}
+{i^\delta\pi\inv(2\pi)^{1-s-t_2}\Gamma(s+t_2)\cos(\pi(\frac{s+t_2}2+\frac\delta 2))}\\
+&=(2\pi)^{-1+2s+t_1+t_2}\frac{\Gamma(1-s-t_1)}{\Gamma(s+t_2)}\frac{\cos(\pi(\frac{1-s-t_1}2+\frac\delta 2))}{\cos(\pi(\frac{s+t_2}2+\frac\delta 2))}
+\end{aligned}
+$$
+
+For the second use:
+$$
+\begin{aligned}
+\frac{\cos(\pi(\frac{1-s-t_1+\delta}2))}
+     {\cos(\pi(\frac{s+t_2+\delta}2))}&=
+     \frac{\cos(\pi(\frac{s+t_1-\delta-1}2))}
+          {\cos(\pi(\frac{s+t_2+\delta}2))}\\
+          &=
+    \frac{\cos(\pi(\frac{s+t_2+\delta}2+\frac{t_1-t_2-1}2-\delta))}
+       {\cos(\pi(\frac{s+t_2+\delta}2))}\\
+\end{aligned}
+$$
+If $\frac{t_1-t_2-1}2-\delta\in\Z$ this is equal to
+$(-1)^{\frac{t_1-t_2-1}2-\delta}$.
+
+For the last identity take $t_1=t,t_2=-t$. The condition is $t_1-t_2\in 2\Z+1$, i.e.
+$2t\in 2\Z+1$.
+\end{proof}
+
+\sec{Some identities}
+
+It is convenient to change notation and for $x,y\in \C, x-y\in\Z$, define
+$$
+\c(x,y)=\b(x-y,x+y).
+$$
+Note that
+$$
+\c(x,y)=\c(y,x)
+$$
+and also
+$$
+\b(x,y)=\c(\frac{x+y}2,\frac{-x+y}2)
+$$
+Therefore
+$$
+\epsilon(\c(x,y))=i^{|x-y|+1}
+$$
+and
+$$
+\gamma(\c(x,y))=i^{|x-y|+1}(2\pi)^{-1+2s+x+y}\frac{\Gamma(1-s+\frac{-|x+y|+x-y}2)}{\Gamma(s+\frac{|x+y|+x-y}2)}
+$$
+In particular, we may assume $x\ge y$, in which case
+$$
+\gamma(\c(x,y))=i^{x-y+1}(2\pi)^{-1+2s+x+y}\frac{\Gamma(1-s-y)}{\Gamma(s+x)}
+$$
+
+
+
+\begin{lemma}
+Suppose $t_1-t_2\in2\Z+1$. Then
+$$
+\gamma(s,a(0,t_1))\gamma(s,a(0,t_2))=
+\gamma(s,a(1,t_1))\gamma(s,a(1,t_2)).
+$$
+Also for $\delta=0,1$:
+$$
+\gamma(s,\a(\delta,t_1))\gamma(s,\a(\delta,t_2))=\gamma(s,\c(t_1,t_2))
+$$
+\end{lemma}
+
+
+See Proposition \ref{p:basic}.
+
+\begin{lemma}
+  Assume $x-y\in2\Z$. Then
+$$
+  \gamma(s(\a,(\delta,x))\gamma(s,\c(y,z))=
+  \gamma(s(\a,(\delta,y))\gamma(s,\c(x,z))
+  $$
+\end{lemma}
+
+\begin{proof}
+  Turn the crank\dots
+  We want to know that
+$$
+  (-i)^\delta\pi\inv(2\pi)^{s+x}\Gamma(1-s-x)\cos(\pi(\frac{1-s-x+\delta}2))
+  i^{y-z+1}(2\pi)^{-1+2s+y+z}\frac{\Gamma(1-s-z)}{\Gamma(s+y)}
+  $$
+  and
+$$
+(-i)^\delta\pi\inv(2\pi)^{s+y}\Gamma(1-s-y)\cos(\pi(\frac{1-s-y+\delta}2))
+i^{x-z+1}(2\pi)^{-1+2s+x+z}\frac{\Gamma(1-s-z)}{\Gamma(s+x)}
+$$
+After some obvious cancellations we need to show
+$$
+i^y\frac{\Gamma(1-s-x)}{\Gamma(s+y)}\cos(\pi(\frac{1-s-x+\delta}2))
+=
+i^x\frac{\Gamma(1-s-y)}{\Gamma(s+x)}\cos(\pi(\frac{1-s-y+\delta}2))
+$$
+Rearranging terms leads to
+$$
+i^y\Gamma(1-s-x)\Gamma(s+x)\cos(\pi(\frac{1-s-x+\delta}2))
+=
+i^x\Gamma(1-s-y)\Gamma(s+y)\cos(\pi(\frac{1-s-y+\delta}2))
+$$
+Apply \eqref{e:ref} to the left hand side:
+$$
+\begin{aligned}
+  i^y\Gamma(1-s-x)\Gamma(s+x)\cos(\pi(\frac{1-s-x+\delta}2))
+&=
+i^y\pi\frac{\cos(\pi(\frac{1-s-x+\delta}2)}{\sin(\pi(1-s-x))}\\
+&=
+i^y\pi\frac{\cos(\pi(\frac{1-s-x+\delta}2)}{2\sin(\pi(\frac{1-s-x}2))\cos(\pi(\frac{1-s-x}2))}
+\end{aligned}
+$$
+If $\delta=0$ this equals
+$$
+\frac{i^y\pi}{2\sin(\pi(\frac{1-s-x}2))}
+$$
+If $\delta=1$ the numerator is equal to $-\sin(\pi(\frac{1-s-x}2)$, so this equals
+$$
+\frac{-i^y\pi}{2\cos(\pi(\frac{1-s-x}2))}
+$$
+Exactly the same applies to the right hand side. So, if $\delta=0$ we need to prove
+$$
+\frac{i^y\pi}{2\sin(\pi(\frac{1-s-x}2))}
+=
+\frac{i^x\pi}{2\sin(\pi(\frac{1-s-y}2))}
+$$
+i.e.
+$$
+\frac{\sin(\pi(\frac{1-s-y}2))}
+     {\sin(\pi(\frac{1-s-x}2))}=i^{x-y}
+     $$
+     which is equivalent to
+$$
+\frac{\sin(\pi(\frac{1-s-x}2+\frac{x-y}2))}
+{\sin(\pi(\frac{1-s-x}2))}=i^{x-y}
+$$
+Since $\frac{x-y}2\in\Z$ the left hand side is $(-1)^{\frac{x-y}2}$, which equals the right hand side.
+
+  When $\delta=1$ we have to show
+$$
+\frac{-i^y\pi}{2\cos(\pi(\frac{1-s-x}2))}
+=
+\frac{-i^x\pi}{2\cos(\pi(\frac{1-s-y}2))}
+$$
+which follows similarly.
+\end{proof}
+
+\begin{lemma}
+
+  Suppose $x-y\in\Z, z-w\in\Z$ and $y-z\in\Z$. Then
+$$
+\gamma(s(\c(x,y))\gamma(s(\c(z,w))=
+\gamma(s(\c(x,z))\gamma(s(\c(y,w))
+$$
+\end{lemma}
+
+Note that the assumptions are what is need to make all terms well defined.
+
+\begin{proof}
+  We need to show
+$$
+  i^{x-y+1}i^{z-w+1}(2\pi)^{-1+2s+x+y}(2\pi)^{-1+2s+z+w}\frac{\Gamma(1-s-y)}{\Gamma(s+x)}\frac{\Gamma(1-s-w)}{\Gamma(s+z)}
+  $$
+  equals
+$$
+i^{x-z+1}i^{y-w+1}(2\pi)^{-1+2s+x+z}(2\pi)^{-1+2s+y+w}\frac{\Gamma(1-s-z)}{\Gamma(s+x)}\frac{\Gamma(1-s-w)}{\Gamma(s+y)}
+$$
+After some obvious cancellations and rearranging terms we have to prove
+$$
+i^{-y+z}\Gamma(1-s-y)\Gamma(s+y)=
+i^{-z+y}\Gamma(1-s-z)\Gamma(s+z)
+$$
+Applying \eqref{e:ref} we have to show
+$$
+\frac{\pi i^{-y+z}}{\sin(\pi(s+y))}
+=
+\frac{\pi i^{-z+y}}{\sin(\pi(s+z))}
+$$
+or equivalently
+$$
+\frac{\sin(\pi(s+z))}{\sin(\pi(s+y))}=i^{-z+y}i^{y-z}
+$$
+This is equivalent to
+$$
+\frac{\sin(\pi((s+y)+(-z+y)))}{\sin(\pi(s+y))}=(-1)^{-z+y}
+$$
+which proves the result.
+\end{proof}
+
+Here is a summary.
+
+\begin{proposition}
+\hfil
+
+\begin{enumerate}
+\item $\gamma(s,\a(0,t_1))\gamma(s,\a(0,t_2))=\gamma(s,\a(1,t_1))\gamma(s,\a(1,t_2))$ \quad($t_1-t_2\in2\Z+1$)
+\item $\gamma(s,\a(\delta,t_1))\gamma(s,\a(\delta,t_2))=\gamma(s,\c(t_1,t_2))$ \quad($t_1-t_2\in2\Z+1$)
+\item   $  \gamma(s,\a(\delta,x))\gamma(s,\c(y,z))=\gamma(s,\a(\delta,y))\gamma(s,\c(x,z))$ \quad$(x-y\in2\Z)$
+\item 
+$\gamma(s,\c(x,y))\gamma(s,\c(z,w))=\gamma(s,\c(x,z))\gamma(s,\c(y,w))$\quad(
+$x-y,z-w,y-z\in\Z$)
+\end{enumerate}
+\end{proposition}
+
+\sec{The cross action}
+
+Let $\LG=\langle \ch G,\ch\delta\rangle$ be the L-group of the inner class. 
+Fix a $\ch\delta$-stable Cartan subgroup $\ch H$ of $\ch G$.
+Consider the set
+$$
+\P=\{(y,\gamma)\}
+$$
+where
+\begin{enumerate}
+\item $\gamma$ is a semisimple of $\ch\g$
+\item $y\in \LG-\ch G$
+\item $y^2=\exp(2\pi i\gamma)$
+\item $\exp(\gamma-y\gamma)=1$
+\end{enumerate}
+We've written $y\gamma$ for $\Ad(y)(\gamma)$. 
+
+$$
+\Y =\Norm_{\ch G\ch\delta}(\ch H).
+$$
+Suppose $y\in \Y,\gamma\in X_*(\ch H)\otimes\C$ satisfy:
+$$
+\begin{aligned}
+\gamma-y\gamma&\in X_*(\ch H)\\
+y^2&=\exp(2\pi i\gamma)
+\end{aligned}
+$$
+(where $y\gamma=\Ad(y)\gamma$). 
+
+Define a homomorphism $\phi=\phi(y,\gamma):\WR\rightarrow \LG$ by:
+$$
+\begin{aligned}
+\phi(z)&=z^\gamma\overline z^{y\gamma}\\
+\phi(j)&=e^{-\pi i\gamma}y
+\end{aligned}
+$$
+The first formula is shorthand for
+$$
+\phi(e^z)=e^{z\lambda -\overline zy\lambda}
+$$
+
+
+It is easy to see $\phi$ is a Weil homomorphism: the condition on $\gamma-y\gamma$ insures it is well defined, and
+the condition on $y^2$ implies $\phi(j)^2=\phi(-1)$. Furthermore every such homomorphism is $\ch G$-conjugate to one of this form.
+
+The normalizer of $\ch H$ acts on $\Y$ by conjugation, and this factors 
+
+
+\sec{Representations of the Weil group}
+
+Consider an $n$-dimensional representation $\phi$ of $W_\R$. After conjugating we can write
+$\phi$ as a direct sum of terms $\a(\delta,t)$ and $\b(n,\ell)$. 
+
+
+
+\enddocument
+\end
+%%% Local Variables:  
+%%% mode: latex
+%%% TeY-master: t
+%%% End: s_{1}:0 -> -1 6$$
